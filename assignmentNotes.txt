@@ -1,0 +1,2 @@
+data and services are a copy that are included inside sleep-wars folder
+sleep-wars is the actual project directory you want to start in, ionic was used to generate this template file

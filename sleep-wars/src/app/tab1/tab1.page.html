@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <!-- User input section -->
+  
+
+  <ion-card color = "light">
+    <ion-card-header>
+      <ion-card-title>Log Sleep</ion-card-title>
+      <ion-card-subtitle>How much sleep did you get last night?</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <img src="../../assets/icon/favicon.png" alt="moon">
+      <ion-item>
+        <ion-input type="number" placeholder="Enter hours slept"></ion-input>
+      </ion-item>
+      description filler, not sure I want this here though
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color = "light">
+    <ion-card-header>
+      <ion-card-title>Log Daytime Sleepiness</ion-card-title>
+      <ion-card-subtitle>Come back and tell us how your day went!</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <img src="../../assets/icon/favicon.png" alt="moon">
+      <ion-item>
+        <ion-input type="number" placeholder="Enter sleepy levels 0-7"></ion-input>
+      </ion-item>
+      description filler, not sure I want this here though
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button fill="solid">Save</ion-button>
+  <ion-button fill="outline">Reset Data</ion-button>
+  
+  
+
+
+</ion-content>
+
+<!--   <app-explore-container name="Tab 1 page"></app-explore-container> -->

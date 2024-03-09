@@ -1,0 +1,7 @@
+{
+  "name": "Sleep Wars",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
