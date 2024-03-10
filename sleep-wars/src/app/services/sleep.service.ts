@@ -4,7 +4,7 @@ import { SleepData } from '../data/sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import * as firebase from 'firebase/app';
 
-import { Firestore, collection, collectionData, deleteDoc, doc, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, deleteDoc, doc, addDoc, setDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -20,24 +20,32 @@ export class SleepService {
 		let sleepCollection = collection(this.fs, 'sleepData')
 		return collectionData(sleepCollection, {idField: "id"})
 	}
-
+	/*
 	addSleep(sleep: SleepData){
 		// should create key of date and values should be the dictionary entires
 		//let dateToString = sleep.dateString();
 		//sleep.dateId = doc(collection(this.fs, "id")).id;
 		let documentRef = doc(collection(this.fs, "sleepData"), sleep.dateString());
 		return addDoc(collection(this.fs, "sleepStuff"), this.objToFirestore(sleep))
-	}
-	/*
-	addSleep(sleep: SleepData){
-		// should create key of date and values should be the dictionary entires
-		let dateToString = sleep.dateString();
-		//return addDoc(doc(collection(this.fs, "sleepData", dateToString)), sleep);
-		let sleepDocRef = doc(collection(this.fs, "sleepData"), dateToString);
-    	return addDoc(collection(this.fs, 'Tasks'), sleep);
-    	console.log("Sleep data added successfully")
+		
 	}
 	*/
+
+
+
+  addSleep(sleep:SleepData){
+	const customDocRef = doc(this.fs, 'sleepData', sleep.dateString());
+	const firestoreData = this.objToFirestore(sleep);
+
+	return setDoc(customDocRef, firestoreData)
+
+
+  }
+  
+  
+
+
+
 
 
 	deleteSleep(id:string){

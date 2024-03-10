@@ -34,14 +34,17 @@ export class Tab1Page {
     console.log("sleep hours: ", this.sleepHour)
     console.log("sleep level: ", this.sleepLevel)
     
-    this.service.addSleep(this.sleepObj).then((sleep) => {
-      if (sleep) {
-        alert('Task Added Successfully');
-        this.sleepHour = 0;
-        this.sleepLevel = 0;
-        //may need to reset date again after
-      }
-    })
+
+    this.service.addSleep(this.sleepObj).then(() => {
+      alert('Task Added Successfully');
+      this.sleepHour = 0;
+      this.sleepLevel = 0;
+      //may need to reset date again after
+    }).catch((error) => {
+      console.error('Error adding sleep data:', error);
+      // Handle error appropriately, such as displaying an error message to the user
+    });
+
     
   }
 
