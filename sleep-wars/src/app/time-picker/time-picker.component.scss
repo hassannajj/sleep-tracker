@@ -1,0 +1,16 @@
+.time-picker {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Adjust width as needed */
+}
+
+.time-picker ion-select {
+  width: 33%; /* Adjust width for each select */
+  text-align: center;
+  font-size: 0.8rem; /* Adjust font size */
+  border-radius: 10px; /* Rounded corners for wheel look */
+}
+
+.time-picker span {
+  margin: 0 5px; /* Spacing between selections */
+}

@@ -8,22 +8,46 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+    <ion-toolbar class="date-container">
+      <ion-title size="large" id="today-date">{{ formattedDate }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
 
+  <ion-card color = "light" class="center-card" id="sleep-card">
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header>
+      <ion-card-title>What time did you sleep last night?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <app-time-picker (timeChange)="onSleepTimeSelected($event)"></app-time-picker>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color = "light" class="center-card" id="wake-card">
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header>
+      <ion-card-title>What time did you wake up?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <app-time-picker (timeChange)="onWakeTimeSelected($event)"></app-time-picker>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
 
   <!-- User input section -->
-  
+<!--
 
   <ion-card color = "light">
     <ion-card-header>
       <ion-card-title>Log Sleep</ion-card-title>
       <ion-card-subtitle>How much sleep did you get last night?</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       <img src="../../assets/icon/favicon.png" alt="moon">
       <ion-item>
@@ -38,7 +62,7 @@
       <ion-card-title>Log Daytime Sleepiness</ion-card-title>
       <ion-card-subtitle>Come back and tell us how your day went!</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       <img src="../../assets/icon/favicon.png" alt="moon">
       <ion-item>
@@ -50,8 +74,8 @@
 
   <ion-button fill="solid">Save</ion-button>
   <ion-button fill="outline">Reset Data</ion-button>
-  
-  
+ -->
+
 
 
 </ion-content>

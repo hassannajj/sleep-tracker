@@ -1,0 +1,15 @@
+<ion-item>
+  <div class="time-picker">
+    <ion-select [(ngModel)]="selectedHour" interface="action-sheet" (ionChange)="emitTimeChange()">
+      <ion-select-option *ngFor="let hour of hours" [value]="hour" class="selectOpt">{{ hour }}</ion-select-option>
+    </ion-select>
+    <span>:</span>
+    <ion-select [(ngModel)]="selectedMinute" interface="action-sheet" (ionChange)="emitTimeChange()">
+      <ion-select-option *ngFor="let minute of minutes" [value]="minute" class="selectOpt">{{ minute }}</ion-select-option>
+    </ion-select>
+    <ion-select [(ngModel)]="selectedAmPm" interface="action-sheet" (ionChange)="emitTimeChange()">
+      <ion-select-option value="AM" class="selectOpt">AM</ion-select-option>
+      <ion-select-option value="PM" class="selectOpt">PM</ion-select-option>
+    </ion-select>
+  </div>
+</ion-item>
