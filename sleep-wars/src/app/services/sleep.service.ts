@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { SleepData } from '../data/sleep-data';
-import { OvernightSleepData } from '../data/overnight-sleep-data';
+//import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import * as firebase from 'firebase/app';
 
 import { Firestore, collection, collectionData, deleteDoc, doc, addDoc } from '@angular/fire/firestore';
 
@@ -9,10 +10,9 @@ import { Firestore, collection, collectionData, deleteDoc, doc, addDoc } from '@
   providedIn: 'root'
 })
 export class SleepService {
-
+	
 	
 	constructor(private fs:Firestore) {
-
 	}
 	
 	// This function should retrieve all the sleep collection in Firestore
@@ -23,19 +23,45 @@ export class SleepService {
 
 	addSleep(sleep: SleepData){
 		// should create key of date and values should be the dictionary entires
+		//let dateToString = sleep.dateString();
+		//sleep.dateId = doc(collection(this.fs, "id")).id;
+		let documentRef = doc(collection(this.fs, "sleepData"), sleep.dateString());
+		return addDoc(collection(this.fs, "sleepStuff"), this.objToFirestore(sleep))
+	}
+	/*
+	addSleep(sleep: SleepData){
+		// should create key of date and values should be the dictionary entires
 		let dateToString = sleep.dateString();
 		//return addDoc(doc(collection(this.fs, "sleepData", dateToString)), sleep);
 		let sleepDocRef = doc(collection(this.fs, "sleepData"), dateToString);
-    	return addDoc(collection(this.fs, 'Tasks'), sleepDocRef);
+    	return addDoc(collection(this.fs, 'Tasks'), sleep);
     	console.log("Sleep data added successfully")
 	}
+	*/
+
 
 	deleteSleep(id:string){
 		// TODO (deleteDoc)
 		let sleepCollection = collection(this.fs, 'sleepData')
 		return collectionData(sleepCollection, {idField: "id"})
 	}
-	
+
+	objToFirestore(sleepData: SleepData){
+		return {
+			dateId: sleepData.dateString(),
+			sleepHour: sleepData.sleepHour,
+			sleepLevel: sleepData.sleepLevel
+		};
+	}
+/*
+	static toFirestore(sleepData: SleepData): firebase.firestore.DocumentData {
+		return {
+			dateId: sleepData.dateId,
+			sleepHour: sleepData.sleepHour,
+			sleepLevel: sleepData.sleepLevel
+		};
+	  }
+*/
 
 }
 

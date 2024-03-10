@@ -15,11 +15,15 @@ export class SleepData {
 		// modifying these above will change display
 	}
 
-	summaryString():string {
-		return 'Unknown sleep data';
-	}
+	
 
 	dateString():string {
 		return this.dateId.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 	}
+
+	
+	summaryString():string {
+		return 'Unknown sleep data';
+	}
+	
 }

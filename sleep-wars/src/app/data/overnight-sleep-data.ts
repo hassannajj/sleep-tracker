@@ -1,5 +1,5 @@
 import { SleepData } from './sleep-data';
-
+/*
 export class OvernightSleepData extends SleepData {
 	private sleepStart:Date;
 	private sleepEnd:Date;
@@ -25,3 +25,4 @@ export class OvernightSleepData extends SleepData {
 		return "Night of " + this.sleepStart.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 	}
 }
+*/
