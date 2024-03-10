@@ -1,13 +1,18 @@
 import { nanoid } from 'nanoid';
-
+// combining sleep data nd sleepiness level
 export class SleepData {
-	id:string;
-	loggedAt:Date;
+
+	
+	dateId:Date;
+	sleepHour: number;
+	sleepLevel: number;
 
 	constructor() {
 		//Assign a random (unique) ID. This may be useful for comparison (e.g., are two logged entries the same).
-		this.id = nanoid();
-		this.loggedAt = new Date();
+		this.dateId = new Date();
+		this.sleepHour = 0;
+		this.sleepLevel = 0;
+		// modifying these above will change display
 	}
 
 	summaryString():string {
@@ -15,6 +20,6 @@ export class SleepData {
 	}
 
 	dateString():string {
-		return this.loggedAt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+		return this.dateId.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 	}
 }

@@ -27,7 +27,7 @@
     <ion-card-content>
       <img src="../../assets/icon/favicon.png" alt="moon">
       <ion-item>
-        <ion-input type="number" placeholder="Enter hours slept"></ion-input>
+        <ion-input type="number" placeholder="Enter hours slept" [(ngModel)]="sleepObj.sleepHour"></ion-input>
       </ion-item>
       description filler, not sure I want this here though
     </ion-card-content>
@@ -42,13 +42,13 @@
     <ion-card-content>
       <img src="../../assets/icon/favicon.png" alt="moon">
       <ion-item>
-        <ion-input type="number" placeholder="Enter sleepy levels 0-7"></ion-input>
+        <ion-input type="number" placeholder="Enter sleepy levels 0-7" [(ngModel)]="sleepLevel"></ion-input>
       </ion-item>
       description filler, not sure I want this here though
     </ion-card-content>
   </ion-card>
 
-  <ion-button fill="solid">Save</ion-button>
+  <ion-button fill="solid" (click) = "addSleepData()">Save</ion-button>
   <ion-button fill="outline">Reset Data</ion-button>
   
   

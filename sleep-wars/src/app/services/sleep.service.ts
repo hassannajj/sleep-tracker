@@ -3,7 +3,7 @@ import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, deleteDoc, doc, addDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +17,22 @@ export class SleepService {
 	
 	// This function should retrieve all the sleep collection in Firestore
 	getSleep(){
-		let sleepCollection = collection(this.fs, 'sleepCollection')
+		let sleepCollection = collection(this.fs, 'sleepData')
 		return collectionData(sleepCollection, {idField: "id"})
 	}
 
-	addSleep(desc:string){
-		// TODO (addDoc)
-		let sleepCollection = collection(this.fs, 'sleepCollection')
-		return collectionData(sleepCollection, {idField: "id"})
-		
+	addSleep(sleep: SleepData){
+		// should create key of date and values should be the dictionary entires
+		let dateToString = sleep.dateString();
+		//return addDoc(doc(collection(this.fs, "sleepData", dateToString)), sleep);
+		let sleepDocRef = doc(collection(this.fs, "sleepData"), dateToString);
+    	return addDoc(collection(this.fs, 'Tasks'), sleepDocRef);
+    	console.log("Sleep data added successfully")
 	}
 
 	deleteSleep(id:string){
 		// TODO (deleteDoc)
-		let sleepCollection = collection(this.fs, 'sleepCollection')
+		let sleepCollection = collection(this.fs, 'sleepData')
 		return collectionData(sleepCollection, {idField: "id"})
 	}
 	
