@@ -18,23 +18,15 @@ export class SleepService {
 	
 	// This function should retrieve all the sleep collection in Firestore
 	
+	/*
 	getSleep(){
 		let sleepCollection = collection(this.fs, 'sleepData')
-		console.log("sleepCollection: ", sleepCollection)
+		console.log("getSleep() return: ", collectionData(sleepCollection))
 		return collectionData(sleepCollection, {idField: "id"})
 	}
-	
-	
-	/*
-	getSleep(date:string){
-		const customDocRef = doc(this.fs, 'sleepData', date);
-		const docSnap = getDoc(customDocRef);
-		return this.firestoreToObj(docSnap);
-		
-	}
 	*/
-	
 
+	
 
 	
 	
@@ -58,6 +50,34 @@ export class SleepService {
 	}
 	*/
 
+	//gets sleep of 1 day
+	getSleep(date:string){
+		// go into firebase and find sleepData collection
+		const customDocRef = doc(this.fs, 'sleepData', date);
+		// then get a single document
+		const docSnap = getDoc(customDocRef);
+		// want to return sleep obj
+		let sleepObj = new SleepData();
+		
+
+		docSnap.then((snapshot)=> {
+			//const data = snapshot.data();
+			//console.log("SleepHour: ", snapshot.get('dateId'));
+			sleepObj.dateId = snapshot.get("dateId");
+			sleepObj.sleepHour = snapshot.get("sleepHour");
+			sleepObj.sleepLevel = snapshot.get("sleepLevel");
+		});
+
+		return sleepObj;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	// Used in Tab 1
  	addSleep(sleep:SleepData){
@@ -87,13 +107,9 @@ export class SleepService {
 		};
 	}
 
-	firestoreToObj(data: any): SleepData {
-		const sleepData = new SleepData();
-		sleepData.dateId = new Date(data.dateId);
-		sleepData.sleepHour = data.sleepHour;
-		sleepData.sleepLevel = data.sleepLevel;
-		return sleepData;
-	}
+	
+
+
 	
 
 
