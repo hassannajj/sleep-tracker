@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SleepData } from '../data/sleep-data';
+import { SleepService } from '../services/sleep.service';
 
 @Component({
   selector: 'app-tab2',

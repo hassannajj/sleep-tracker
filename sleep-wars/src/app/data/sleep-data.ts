@@ -14,10 +14,9 @@ export class SleepData {
 		this.sleepLevel = 0;
 		// modifying these above will change display
 	}
-
 	
-
 	dateString():string {
+		console.log("dateID raw: ", this.dateId);
 		return this.dateId.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 	}
 
@@ -27,3 +26,6 @@ export class SleepData {
 	}
 	
 }
+
+
+// NOTES: Only using one TS file to store data for both slepe hours and sleep level

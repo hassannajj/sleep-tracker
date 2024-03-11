@@ -17,7 +17,7 @@ export class Tab1Page {
   sleepHour: number = 0;
   sleepLevel: number = 0;
   
-
+  //this.sleepObj.dateId.setDate(this.sleepObj.dateId.getDate() - 1); // Subtract one day
 
 
   constructor(private service: SleepService) {}
@@ -25,27 +25,34 @@ export class Tab1Page {
 
 
   addSleepData() {
-    //want to populate this with what was taken from html
-    this.sleepObj.dateId = new Date(); // do this later
+    //want to populate this with what was taken from html (right side)
+    //this.sleepObj.dateId = new Date(); // do this later
     this.sleepObj.sleepHour = this.sleepHour;
     this.sleepObj.sleepLevel = this.sleepLevel;
 
-    //right side of param is from html retrieval
-    console.log("sleep hours: ", this.sleepHour)
-    console.log("sleep level: ", this.sleepLevel)
+    // right side of param is from html retrieval
+    //console.log("sleep hours: ", this.sleepHour)
+    //console.log("sleep level: ", this.sleepLevel)
     
 
     this.service.addSleep(this.sleepObj).then(() => {
-      alert('Task Added Successfully');
-      this.sleepHour = 0;
-      this.sleepLevel = 0;
-      //may need to reset date again after
+      alert('Sleep Log Added Successfully');
+
     }).catch((error) => {
       console.error('Error adding sleep data:', error);
       // Handle error appropriately, such as displaying an error message to the user
     });
+  }
 
-    
+  deleteCurrentData() { 
+    this.service.deleteSleep(this.sleepObj).then(() => {
+      alert('Sleep Log Deleted Successfully');
+      this.sleepHour = 0;
+      this.sleepLevel = 0;
+
+    }).catch((error) => {
+      console.error('Error adding sleep data:', error);
+    });
   }
 
 }

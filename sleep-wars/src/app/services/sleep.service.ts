@@ -3,8 +3,9 @@ import { SleepData } from '../data/sleep-data';
 //import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import * as firebase from 'firebase/app';
+import { from, Observable } from 'rxjs';
 
-import { Firestore, collection, collectionData, deleteDoc, doc, addDoc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, deleteDoc, doc, addDoc, setDoc, getDoc} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,28 @@ export class SleepService {
 	}
 	
 	// This function should retrieve all the sleep collection in Firestore
+	
 	getSleep(){
 		let sleepCollection = collection(this.fs, 'sleepData')
+		console.log("sleepCollection: ", sleepCollection)
 		return collectionData(sleepCollection, {idField: "id"})
 	}
+	
+	
+	/*
+	getSleep(date:string){
+		const customDocRef = doc(this.fs, 'sleepData', date);
+		const docSnap = getDoc(customDocRef);
+		return this.firestoreToObj(docSnap);
+		
+	}
+	*/
+	
+
+
+	
+	
+
 	/*
 	addSleep(sleep: SleepData){
 		// should create key of date and values should be the dictionary entires
@@ -31,29 +50,35 @@ export class SleepService {
 	}
 	*/
 
-
-
-  addSleep(sleep:SleepData){
-	const customDocRef = doc(this.fs, 'sleepData', sleep.dateString());
-	const firestoreData = this.objToFirestore(sleep);
-
-	return setDoc(customDocRef, firestoreData)
-
-
-  }
-  
-  
-
-
-
-
-
+	/*
 	deleteSleep(id:string){
 		// TODO (deleteDoc)
 		let sleepCollection = collection(this.fs, 'sleepData')
 		return collectionData(sleepCollection, {idField: "id"})
 	}
+	*/
 
+	
+	// Used in Tab 1
+ 	addSleep(sleep:SleepData){
+		// this creates a new document in firebase, setting docId to the date of sleep log
+		const customDocRef = doc(this.fs, 'sleepData', sleep.dateString());
+		// this will populate the values of the document with sleep data
+		const firestoreData = this.objToFirestore(sleep);
+
+		return setDoc(customDocRef, firestoreData)
+  	}
+  
+	deleteSleep(sleep: SleepData) {
+		// get a reference to the document to delete based on the document ID
+		const customDocRef = doc(this.fs, 'sleepData', sleep.dateString());
+		// delete the document
+		return deleteDoc(customDocRef);
+	}
+	
+
+
+	// helper function to parse sleepObj into acceptable firebase format
 	objToFirestore(sleepData: SleepData){
 		return {
 			dateId: sleepData.dateString(),
@@ -61,15 +86,18 @@ export class SleepService {
 			sleepLevel: sleepData.sleepLevel
 		};
 	}
-/*
-	static toFirestore(sleepData: SleepData): firebase.firestore.DocumentData {
-		return {
-			dateId: sleepData.dateId,
-			sleepHour: sleepData.sleepHour,
-			sleepLevel: sleepData.sleepLevel
-		};
-	  }
-*/
+
+	firestoreToObj(data: any): SleepData {
+		const sleepData = new SleepData();
+		sleepData.dateId = new Date(data.dateId);
+		sleepData.sleepHour = data.sleepHour;
+		sleepData.sleepLevel = data.sleepLevel;
+		return sleepData;
+	}
+	
+
+
+	
 
 }
 
