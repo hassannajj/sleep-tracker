@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SleepData } from '../data/sleep-data';
 import { SleepService } from '../services/sleep.service';
-import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-tab2',
@@ -9,6 +8,8 @@ import { Chart } from 'chart.js';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+
+  
 
   sleepHoursSet: any[] = [];
   sleepLevelSet: any[] = [];
@@ -22,8 +23,10 @@ export class Tab2Page {
     let curSleepObj = new SleepData();
 
     for (let i = 0; i < 7; i++) {
+      curSleepObj.dateId.setDate(curSleepObj.dateId.getDate() - i);
       curSleepObj = this.service.getSleep(curSleepObj.dateString())
-      //this.sleepHoursSet.push()
+      this.sleepHoursSet.push(curSleepObj.sleepHour)
+      this.sleepLevelSet.push(curSleepObj.sleepLevel)
 
     }
     

@@ -16,7 +16,7 @@ export class SleepData {
 	}
 	
 	dateString():string {
-		console.log("dateID raw: ", this.dateId);
+		//console.log("dateID raw: ", this.dateId);
 		return this.dateId.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 	}
 
