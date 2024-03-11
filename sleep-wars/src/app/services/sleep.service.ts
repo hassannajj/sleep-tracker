@@ -51,6 +51,7 @@ export class SleepService {
 	*/
 
 	//gets sleep of 1 day
+	/*
 	getSleep(date:string){
 		// go into firebase and find sleepData collection
 		const customDocRef = doc(this.fs, 'sleepData', date);
@@ -71,6 +72,44 @@ export class SleepService {
 		return sleepObj;
 		
 	}
+	*/
+
+	
+
+	async getSleep(documentId: string) {
+		const docRef = doc(this.fs, 'sleepData', documentId);
+		const docSnap = await getDoc(docRef);
+	 
+		if (docSnap.exists()) {
+		   return docSnap.data();
+		} else {
+		   throw new Error("No such document exists!");
+		}
+	 }
+	 
+
+	/*
+	getSleep(date:string){
+		// go into firebase and find sleepData collection
+		const customDocRef = doc(this.fs, 'sleepData', date);
+		// then get a single document
+		const docSnap = getDoc(customDocRef);
+		// want to return sleep obj
+		let sleepObj = new SleepData();
+		
+
+		docSnap.then((snapshot)=> {
+			//const data = snapshot.data();
+			//console.log("SleepHour: ", snapshot.get('dateId'));
+			sleepObj.dateId = snapshot.get("dateId");
+			sleepObj.sleepHour = snapshot.get("sleepHour");
+			sleepObj.sleepLevel = snapshot.get("sleepLevel");
+			return sleepObj;
+		});
+		*/
+
+		
+		
 	
 	
 	
