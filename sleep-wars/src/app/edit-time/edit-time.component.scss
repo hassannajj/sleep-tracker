@@ -1,0 +1,45 @@
+
+.center-card {
+  margin: 0 auto;
+  /* Adjust width as needed */
+  width: 80%;
+}
+
+
+ion-card-content {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#sleep-card {
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#wake-card {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  background-color: antiquewhite;
+  color: black
+}
+
+#wake-card img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+#enter-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+
+}

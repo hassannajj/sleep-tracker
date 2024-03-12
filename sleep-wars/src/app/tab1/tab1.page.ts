@@ -6,30 +6,41 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  selectedSleepTime: string | undefined;
-  selectedWakeTime: string | undefined;
+  selectedSleepTime: string = "12:00 AM";
+  selectedWakeTime: string = "12:00 AM";
+  editTime: boolean = true;
+
+  mood : number = 0;
+  editMood: boolean = false;
+
+  // Formatted to be : "dayOfWeek, month day"
   formattedDate = new Date().toLocaleDateString('en-US', {
+    weekday: 'long',
     month: 'long',
-    day: 'numeric',
-    year: 'numeric',
+    day: 'numeric'
   });
   constructor() {
   }
 
-  // This function will be called when the user selects a sleep time
-  onSleepTimeSelected(selectedTime: string) {
-    this.selectedSleepTime = selectedTime;
+
+  populateSleepTime(sleepTime: string) {
+    // Get child component sleep time variable
+    const splitArray = sleepTime.split('&');
+    this.selectedSleepTime = splitArray[0];
+    this.selectedWakeTime = splitArray[1];
+
+    console.log('testButtonSleep:', this.selectedSleepTime);
+    console.log('testButtonWake:', this.selectedWakeTime);
+
+    this.editTime = false;
+    this.editMood = true;
   }
 
-  // This function will be called when the user selects a wake time
-  onWakeTimeSelected(selectedTime: string) {
-    this.selectedWakeTime = selectedTime;
-  }
+  populateMood(m: number) {
+    this.mood = m;
 
-  // This function will be called when the user clicks the "Calculate" button
-  enterSleep() {
-    console.log('Calculate sleep button clicked');
-    console.log('Selected sleep time:', this.selectedSleepTime);
-    console.log('Selected wake time:', this.selectedWakeTime);
+    console.log('testButtonMood:', this.mood);
+
+    this.editMood = false;
   }
 }

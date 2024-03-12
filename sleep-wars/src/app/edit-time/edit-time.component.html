@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true" id="full-content">
+
+  <ion-card color = "light" class="center-card" id="sleep-card">
+    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <ion-card-header>
+      <ion-card-title>What time did you sleep last night?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <app-time-picker (timeChange)="onSleepTimeSelected($event)"></app-time-picker>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color = "light" class="center-card" id="wake-card">
+    <img alt="Silhouette of mountains" src="../assets/icon/sunrise.png" />
+    <ion-card-header>
+      <ion-card-title>What time did you wake up?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <app-time-picker (timeChange)="onWakeTimeSelected($event)"></app-time-picker>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="enterSleep()" id="enter-button">Enter</ion-button> <!--FIXME: get it centered-->
+
+</ion-content>
