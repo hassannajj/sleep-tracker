@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Today
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" id="full-content">
   <ion-header collapse="condense">
     <ion-toolbar class="date-container">
       <ion-title size="large" id="today-date">{{ formattedDate }}</ion-title>
@@ -27,7 +27,7 @@
   </ion-card>
 
   <ion-card color = "light" class="center-card" id="wake-card">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <img alt="Silhouette of mountains" src="../assets/icon/sunrise.png" />
     <ion-card-header>
       <ion-card-title>What time did you wake up?</ion-card-title>
     </ion-card-header>
@@ -37,6 +37,10 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <ion-button id="enter-button">Enter</ion-button>
+
+</ion-content>
 
 
   <!-- User input section -->
@@ -75,9 +79,5 @@
   <ion-button fill="solid">Save</ion-button>
   <ion-button fill="outline">Reset Data</ion-button>
  -->
-
-
-
-</ion-content>
 
 <!--   <app-explore-container name="Tab 1 page"></app-explore-container> -->

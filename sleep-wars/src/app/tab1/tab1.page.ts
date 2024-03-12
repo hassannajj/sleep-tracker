@@ -13,17 +13,23 @@ export class Tab1Page {
     day: 'numeric',
     year: 'numeric',
   });
-  constructor() {}
+  constructor() {
+  }
 
   // This function will be called when the user selects a sleep time
   onSleepTimeSelected(selectedTime: string) {
     this.selectedSleepTime = selectedTime;
-    console.log('Selected sleep time:', selectedTime);
   }
 
   // This function will be called when the user selects a wake time
   onWakeTimeSelected(selectedTime: string) {
     this.selectedWakeTime = selectedTime;
-    console.log('Selected wake time:', selectedTime);
+  }
+
+  // This function will be called when the user clicks the "Calculate" button
+  enterSleep() {
+    console.log('Calculate sleep button clicked');
+    console.log('Selected sleep time:', this.selectedSleepTime);
+    console.log('Selected wake time:', this.selectedWakeTime);
   }
 }
