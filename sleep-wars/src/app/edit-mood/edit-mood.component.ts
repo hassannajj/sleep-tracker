@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-edit-mood',
@@ -6,9 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-mood.component.scss'],
 })
 export class EditMoodComponent  implements OnInit {
+  mood : number = 0;
+  @Output() buttonClicked = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {}
 
+
+  enterMood() {
+    this.buttonClicked.emit(this.mood);
+  }
 }
