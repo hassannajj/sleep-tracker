@@ -1,3 +1,17 @@
 <p>
-  today-info works!
+  You slept for {{ hoursSlept }} hours today.
 </p>
+<p>
+  You slept at {{ sleepTime }}.
+</p>
+<p>
+  You woke up at {{ wakeTime }}.
+</p>
+<p>
+  You are feeling {{ mood }} today.
+</p>
+
+<ion-card>
+  <ion-button (click)="editTime()" >Edit Sleep Time</ion-button>
+  <ion-button (click)="editMood()">Edit Mood</ion-button>
+</ion-card>

@@ -1,6 +1,53 @@
-<p>
-  edit-mood works!
-</p>
+
+<ion-card id="mood-card">
+
+  <ion-card-header>
+    <ion-card-title>How are you feeling today?</ion-card-title>
+  </ion-card-header>
+
+  <div class="battery-container">
+    <div class="battery-row">
+
+      <div (click)="setSelectedBatteryLevel(0)" [ngClass]="{'active': isActive(0)}" class="battery level-0">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+      <div (click)="setSelectedBatteryLevel(1)" [ngClass]="{'active': isActive(1)}" class="battery level-1">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+      <div (click)="setSelectedBatteryLevel(2)" [ngClass]="{'active': isActive(2)}" class="battery level-2">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+      <div (click)="setSelectedBatteryLevel(3)" [ngClass]="{'active': isActive(3)}" class="battery level-3">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+    </div>
+    <div class="battery-row">
+
+      <div (click)="setSelectedBatteryLevel(4)" [ngClass]="{'active': isActive(4)}" class="battery level-4">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+      <div (click)="setSelectedBatteryLevel(5)" [ngClass]="{'active': isActive(5)}" class="battery level-5">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+      <div (click)="setSelectedBatteryLevel(6)" [ngClass]="{'active': isActive(6)}" class="battery level-6">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+      <div (click)="setSelectedBatteryLevel(7)" [ngClass]="{'active': isActive(7)}" class="battery level-7">
+        <img src="../assets/icon/thunder.png" class="lightning-bolt">
+      </div>
+
+    </div>
+  </div>
+
+</ion-card>
+
 
 <ion-button (click)="enterMood()" id="enter-mood">Enter</ion-button> <!--FIXME: get it centered-->
 

@@ -14,6 +14,14 @@ export class EditMoodComponent  implements OnInit {
   ngOnInit() {}
 
 
+  setSelectedBatteryLevel(m:number) {
+    this.mood = m;
+  }
+
+  isActive(m:number) {
+    return this.mood === m;
+  }
+
   enterMood() {
     this.buttonClicked.emit(this.mood);
   }

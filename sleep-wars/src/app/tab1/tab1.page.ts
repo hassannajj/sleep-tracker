@@ -12,6 +12,7 @@ export class Tab1Page {
 
   mood : number = 0;
   editMood: boolean = false;
+  newDay: boolean = true;
 
   // Formatted to be : "dayOfWeek, month day"
   formattedDate = new Date().toLocaleDateString('en-US', {
@@ -33,7 +34,10 @@ export class Tab1Page {
     console.log('testButtonWake:', this.selectedWakeTime);
 
     this.editTime = false;
-    this.editMood = true;
+    if (this.newDay) {
+      this.newDay = false;
+      this.editMood = true;
+    }
   }
 
   populateMood(m: number) {
@@ -42,5 +46,18 @@ export class Tab1Page {
     console.log('testButtonMood:', this.mood);
 
     this.editMood = false;
+  }
+
+  changeEditState(code: number) {
+    // if code == 0, then we are changing the editTime state
+    // if code == 1, then we are changing the editMood state
+
+    if (code == 0) {
+      this.editTime = true;
+      this.editMood = false;
+    } else if (code == 1) {
+      this.editTime = false;
+      this.editMood = true;
+    }
   }
 }
