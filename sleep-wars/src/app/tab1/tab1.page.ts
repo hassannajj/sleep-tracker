@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+import { SleepData } from '../data/sleep-data';
+import { SleepService } from '../services/sleep.service';
+import { FirebaseApp } from '@angular/fire/app';
 
+
+import 'firebase/firestore'; // Import Firestore explicitly
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',

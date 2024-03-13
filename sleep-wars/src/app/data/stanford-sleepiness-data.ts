@@ -18,7 +18,7 @@ export class StanfordSleepinessData extends SleepData {
 	constructor(loggedValue:number, loggedAt:Date = new Date()) {
 		super();
 		this.loggedValue = loggedValue;
-		this.loggedAt = loggedAt;
+		this.dateId = loggedAt;
 	}
 
 	override summaryString():string {

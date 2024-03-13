@@ -12,14 +12,17 @@ export class AppComponent {
 
   sleep:any = [];
 
+  /*
   refreshNotes(){
     this.service.getSleep().subscribe((res)=>{
 
     })
   }
+  */
+
 
   ngOnInit(){
-    this.refreshNotes();
+    //this.refreshNotes();
   }
 
   // TODO create function to use functions in sleep.service.ts

@@ -1,2 +1,4 @@
 npm install firebase
 npm i @angular/fire
+npm install firebase @angular/fire
+npm i ng-apexcharts
