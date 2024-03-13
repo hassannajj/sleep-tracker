@@ -19,13 +19,20 @@ export class Tab1Page {
   editMood: boolean = false;
   newDay: boolean = true;
 
+  //Backend stuff
+  sleepObj = new SleepData();
+  // These are the two variables I use to get data from html input
+  sleepHour: number = 0;
+  sleepLevel: number = 0;
+
   // Formatted to be : "dayOfWeek, month day"
   formattedDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
     day: 'numeric'
   });
-  constructor() {
+
+  constructor(private service: SleepService) { // data type for parsing data to DB
   }
 
 
@@ -64,5 +71,36 @@ export class Tab1Page {
       this.editTime = false;
       this.editMood = true;
     }
+  }
+
+
+  addSleepData() {
+    //want to populate this with what was taken from html (right side)
+    //this.sleepObj.dateId = new Date(); // do this later
+    this.sleepObj.sleepHour = this.sleepHour;
+    this.sleepObj.sleepLevel = this.sleepLevel;
+
+    // DEBUGGING
+    //console.log("sleep hours: ", this.sleepHour)
+    //console.log("sleep level: ", this.sleepLevel)
+    
+    this.service.addSleep(this.sleepObj).then(() => {
+      alert('Sleep Log Added Successfully');
+
+    }).catch((error) => {
+      console.error('Error adding sleep data:', error);
+      // Handle error appropriately, such as displaying an error message to the user
+    });
+  }
+
+  deleteCurrentData() { 
+    this.service.deleteSleep(this.sleepObj).then(() => {
+      alert('Sleep Log Deleted Successfully');
+      this.sleepHour = 0;
+      this.sleepLevel = 0;
+
+    }).catch((error) => {
+      console.error('Error adding sleep data:', error);
+    });
   }
 }
