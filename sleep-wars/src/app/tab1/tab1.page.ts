@@ -90,32 +90,44 @@ export class Tab1Page {
 
 
   calculateHoursSlept() {
-    //// Calculate hoursSlept
-
-    // First split the sleep time into hours, minutes, and AM/PM
-    const sleepTimeSplit = this.selectedSleepTime.split(':');
-    const sleepHour = parseInt(sleepTimeSplit[0]);
-    const sleepMinute = parseInt(sleepTimeSplit[1].split(' ')[0]);
-    const sleepAmPm = sleepTimeSplit[1].split(' ')[1];
-
-    console.log('sleepHour:', sleepHour, 'sleepMinute:', sleepMinute, 'sleepAmPm:', sleepAmPm);
-
-    // Then split the wake time into hours, minutes, and AM/PM
-    const wakeTimeSplit = this.selectedWakeTime.split(':');
-    const wakeHour = parseInt(wakeTimeSplit[0]);
-    const wakeMinute = parseInt(wakeTimeSplit[1].split(' ')[0]);
-    const wakeAmPm = wakeTimeSplit[1].split(' ')[1];
-
-    console.log('wakeHour:', wakeHour, 'wakeMinute:', wakeMinute, 'wakeAmPm:', wakeAmPm);
-
-    // Calculate the hours slept
-    if (sleepAmPm === 'PM' && wakeAmPm === 'AM') {
-      this.hoursSlept = (24 - sleepHour) + wakeHour;
-    } else {
-      this.hoursSlept = wakeHour - sleepHour;
+    let [sleepHour, sleepMinute, sleepPeriod]: string[] = this.selectedSleepTime.split(/:| /);
+    let sleepHourInt: number = parseInt(sleepHour);
+    let sleepMinuteInt: number = parseInt(sleepMinute);
+    if (sleepPeriod === 'PM' && sleepHourInt !== 12) {
+        sleepHourInt += 12;
+    } else if (sleepPeriod === 'AM' && sleepHourInt === 12) {
+        sleepHourInt = 0;
     }
 
-    console.log('hoursSlept:', this.hoursSlept);
+    // Convert wake time to military time
+    let [wakeHour, wakeMinute, wakePeriod]: string[] = this.selectedWakeTime.split(/:| /);
+    let wakeHourInt: number = parseInt(wakeHour);
+    let wakeMinuteInt: number = parseInt(wakeMinute);
+    if (wakePeriod === 'PM' && wakeHourInt !== 12) {
+        wakeHourInt += 12;
+    } else if (wakePeriod === 'AM' && wakeHourInt === 12) {
+        wakeHourInt = 0;
+    }
+
+    // Calculate the hours and minutes slept
+    let hrsSlept: number;
+    let minutesSlept: number;
+    if (wakeHourInt < sleepHourInt || (wakeHourInt === sleepHourInt && wakeMinuteInt < sleepMinuteInt)) {
+        hrsSlept = (24 - sleepHourInt) + wakeHourInt;
+        if (wakeMinuteInt < sleepMinuteInt) {
+            hrsSlept--;
+            minutesSlept = 60 - (sleepMinuteInt - wakeMinuteInt);
+        } else {
+            minutesSlept = wakeMinuteInt - sleepMinuteInt;
+        }
+    } else {
+        hrsSlept = wakeHourInt - sleepHourInt;
+        minutesSlept = wakeMinuteInt - sleepMinuteInt;
+    }
+
+    // Output the result
+    console.log('hrsSlept:', hrsSlept);
+    this.hoursSlept = parseFloat((hrsSlept + (minutesSlept / 60)).toFixed(2));
   }
 
 

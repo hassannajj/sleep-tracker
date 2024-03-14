@@ -5,6 +5,7 @@ ion-card {
   color: black;
   font-size: 1em;
   padding: 10% 5% 10% 5%;
+  margin: 5% 5% 5% 5%;
 }
 
 ion-icon {
@@ -16,8 +17,13 @@ ion-icon {
 }
 
 .mood-icon {
-  //color: {{ moodColor }};
   color: red;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5%;
 }
 
 
