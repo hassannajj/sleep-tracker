@@ -1,18 +1,44 @@
-<p>
-  You slept for {{ hoursSlept }} hours today.
-</p>
-<p>
-  You slept at {{ sleepTime }}.
-</p>
-<p>
-  You woke up at {{ wakeTime }}.
-</p>
-<p>
-  You are feeling {{ mood }} today.
-</p>
-
 <ion-card>
-  <ion-button (click)="editTime()" >Edit Sleep Time</ion-button>
-  <ion-button (click)="editMood()">Edit Mood</ion-button>
-  <ion-button (click)="clearData()">Clear Data</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-auto>
+        <ion-icon name="alarm-outline" class="sleep-icon"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <p class="sleep-info">
+          <b>Sleep:</b> {{ hoursSlept }} hours
+        </p>
+        <p class="sleep-info">
+          <b>Slept at:</b> {{ sleepTime }}
+        </p>
+        <p class="sleep-info">
+          <b>Woke up:</b> {{ wakeTime }}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-auto>
+        <div class="battery level-{{mood}}">
+          <img src="../assets/icon/thunder.png" class="lightning-bolt">
+        </div>
+      </ion-col>
+      <ion-col>
+        <p>
+          <b>Feeling:</b> <i>{{ getMoodWord() }}</i>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row>
+    <ion-col>
+      <ion-button expand (click)="editTime()" style="margin-right: 5px;">Edit Sleep Time</ion-button>
+      <ion-button expand (click)="editMood()">Edit Mood</ion-button>
+      <ion-button expand (click)="clearData()">Clear Data</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-card>
+

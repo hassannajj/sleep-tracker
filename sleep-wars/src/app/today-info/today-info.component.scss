@@ -1,0 +1,148 @@
+ion-card {
+  background-color: #acacac;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  font-size: 1em;
+  padding: 10% 10% 10% 10%;
+}
+
+ion-icon {
+  font-size: 3em;
+}
+
+.sleep-info p {
+  font-weight: bold;
+}
+
+.mood-icon {
+  //color: {{ moodColor }};
+  color: red;
+}
+
+
+
+
+
+
+// BATTERY STYLING
+
+$battery-width: 40px;
+$battery-height: 80px;
+$border-width: 3px;
+
+
+.battery {
+  width: $battery-width;
+  height: $battery-height;
+  border: $border-width solid rgb(57, 57, 57);
+  border-radius: 5px;
+  position: relative;
+}
+
+.level-0 {
+  background-color: #f00; // Red
+}
+
+.level-0::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 95%;
+  background-color: black;
+}
+
+.level-1 {
+  background-color: #f20; // Red
+}
+
+.level-1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 80%;
+  background-color: black;
+}
+
+.level-2 {
+  background-color: #f40; // Red
+}
+
+.level-2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 65%;
+  background-color: black;
+}
+
+.level-3 {
+  background-color: #f60; // Orangish Red
+}
+
+.level-3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background-color: black;
+}
+
+.level-4 {
+  background-color: rgb(217, 138, 19); // Orange
+}
+
+
+.level-4::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 35%;
+  background-color: black;
+}
+
+.level-5 {
+  background-color: rgb(162, 255, 0); // Yellowish Green
+}
+
+.level-5::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 25%;
+  background-color: black;
+}
+
+.level-6 {
+  background-color: #0f0; // Light Green
+}
+
+
+.level-6::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+}
+
+.level-7 {
+  background-color: rgb(10, 143, 0); // Green
+}
+
+.lightning-bolt {
+  z-index: 1;
+  position: absolute; /* Make the lightning bolt positioned relative to its parent */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the lightning bolt within the battery */
+  /* Add styles for the lightning bolt (size, color, etc.) */
+}
+

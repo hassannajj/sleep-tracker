@@ -18,6 +18,28 @@ export class TodayInfoComponent  implements OnInit {
 
   ngOnInit() {}
 
+  getMoodWord() {
+    switch(this.mood) {
+      case 7:
+        return "Very Energized";
+      case 6:
+        return "Energized";
+      case 5:
+        return "Slightly Energized";
+      case 4:
+        return "Neutral";
+      case 5:
+        return "Neutral";
+      case 6:
+        return "Low Energy";
+      case 7:
+        return "Very Low Energy";
+      default:
+        return "No mood selected";
+    }
+
+  }
+
   editTime() {
     this.editClicked.emit(0);
   }
