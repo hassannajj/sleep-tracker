@@ -1,12 +1,5 @@
 
-
-<!--
-  FIXME: weird spacing on top of the page
-<ion-header collapse="condense">
-  <ion-toolbar class="date-container">
-    <ion-title size="large" id="today-date">{{ formattedDate }}</ion-title>
-  </ion-toolbar>
-</ion-header> -->
+<app-date-view></app-date-view>
 
 <app-edit-time *ngIf="editTime" (buttonClicked)="populateSleepTime($event)" > </app-edit-time>
 <app-edit-mood *ngIf="editMood" (buttonClicked)="populateMood($event)" > </app-edit-mood>

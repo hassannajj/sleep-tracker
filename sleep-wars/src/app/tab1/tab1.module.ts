@@ -12,6 +12,7 @@ import { TimePickerComponent } from '../time-picker/time-picker.component';
 import { EditTimeComponent } from '../edit-time/edit-time.component';
 import { EditMoodComponent } from '../edit-mood/edit-mood.component';
 import { TodayInfoComponent } from '../today-info/today-info.component';
+import { DateViewComponent } from '../date-view/date-view.component';
 
 
 @NgModule({
@@ -23,6 +24,6 @@ import { TodayInfoComponent } from '../today-info/today-info.component';
     Tab1PageRoutingModule,
     // DON'T ADD HERE
   ],
-  declarations: [Tab1Page, TimePickerComponent, EditTimeComponent, EditMoodComponent, TodayInfoComponent],
+  declarations: [Tab1Page, TimePickerComponent, EditTimeComponent, EditMoodComponent, TodayInfoComponent, DateViewComponent],
 })
 export class Tab1PageModule {}

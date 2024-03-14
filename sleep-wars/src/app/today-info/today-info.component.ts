@@ -28,11 +28,11 @@ export class TodayInfoComponent  implements OnInit {
         return "Slightly Energized";
       case 4:
         return "Neutral";
-      case 5:
+      case 3:
         return "Neutral";
-      case 6:
+      case 2:
         return "Low Energy";
-      case 7:
+      case 1:
         return "Very Low Energy";
       default:
         return "No mood selected";
