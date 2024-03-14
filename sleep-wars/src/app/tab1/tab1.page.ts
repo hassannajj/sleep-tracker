@@ -16,7 +16,7 @@ export class Tab1Page {
   sleepObj = new SleepData();
   sleepHour: number = 0;
   sleepLevel: number = 0;
-  
+  selectedDate: string | undefined; // Declare a property to hold the selected date
   //this.sleepObj.dateId.setDate(this.sleepObj.dateId.getDate() - 1); // Subtract one day
 
 
