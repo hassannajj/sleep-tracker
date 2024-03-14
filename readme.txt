@@ -25,6 +25,8 @@
 
 5. Is there anything special we need to know in order to run your code?
 
+In order to run, cd into sleep-wars folder and enter: 
+    npx ionic serve
 
 
 --Aim for no more than two sentences for each of the following questions.--

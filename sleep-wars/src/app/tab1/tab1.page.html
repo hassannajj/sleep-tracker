@@ -10,7 +10,7 @@
 
 <app-edit-time *ngIf="editTime" (buttonClicked)="populateSleepTime($event)" > </app-edit-time>
 <app-edit-mood *ngIf="editMood" (buttonClicked)="populateMood($event)" > </app-edit-mood>
-<app-today-info *ngIf="!editTime && !editMood" (editClicked)="changeEditState($event)" [sleepTime]="selectedSleepTime" [wakeTime]="selectedWakeTime" [mood]="mood" > </app-today-info>
+<app-today-info *ngIf="!editTime && !editMood" (editClicked)="changeState($event)" [sleepTime]="selectedSleepTime" [wakeTime]="selectedWakeTime" [mood]="mood" [hoursSlept]="hoursSlept" > </app-today-info>
 
 
 <!--
