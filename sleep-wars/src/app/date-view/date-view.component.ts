@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-date-view',
@@ -7,8 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DateViewComponent  implements OnInit {
 
-  constructor() { }
+  @Input() formattedDate: string | undefined;
+
+
+  offSet = 0
+
+  @Output() dateClicked = new EventEmitter<number>();
+  constructor() {}
 
   ngOnInit() {}
 
+  enterDateOffset(num: number) {
+    if (this.offSet + num < 0){
+      return;
+    }
+    this.offSet += num;
+    this.dateClicked.emit(this.offSet);
+  }
+
+  changeDate(date: string) {
+
+  }
 }

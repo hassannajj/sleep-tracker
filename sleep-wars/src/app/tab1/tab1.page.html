@@ -1,16 +1,8 @@
 
-<app-date-view></app-date-view>
+<app-date-view [formattedDate]="formattedDate" (dateClicked)="changeDate($event)"></app-date-view>
 
 <app-edit-time *ngIf="editTime" (buttonClicked)="populateSleepTime($event)" > </app-edit-time>
 <app-edit-mood *ngIf="editMood" (buttonClicked)="populateMood($event)" > </app-edit-mood>
 <app-today-info *ngIf="!editTime && !editMood" (editClicked)="changeState($event)" [sleepTime]="selectedSleepTime" [wakeTime]="selectedWakeTime" [mood]="mood" [hoursSlept]="hoursSlept" > </app-today-info>
 
 
-<!--
-NOTES: IDK where this is supposed to go in your design flow so I'll jsut leave them here.
-You need to call these two functions from the TS file when the button is pressed.
-
-<ion-button fill="solid" (click) = "addSleepData()">Save</ion-button>
-<ion-button fill="outline"(click) = "deleteCurrentData()">Reset Data</ion-button>
-
--->

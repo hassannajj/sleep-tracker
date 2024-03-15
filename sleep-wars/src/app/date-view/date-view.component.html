@@ -1,5 +1,15 @@
-<ion-header collapse="condense" id="date-header">
+<ion-header id="date-header">
   <ion-toolbar class="date-container">
-    <ion-title size="large" id="today-date">{{ formattedDate }}</ion-title>
+    <ion-buttons>
+      <ion-button (click)="enterDateOffset(1)">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+
+      <ion-title size="large" id="today-date">{{ formattedDate }}</ion-title>
+
+      <ion-button (click)="enterDateOffset(-1)">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>

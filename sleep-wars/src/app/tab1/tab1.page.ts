@@ -26,7 +26,7 @@ export class Tab1Page {
   sleepHour: number = 0;
   sleepLevel: number = 0;
   sleepDateOffset: number = 0; // offset to change the day, // NOTES: 0 = today, 1 = yesterday
-  
+
 
   // Formatted to be : "dayOfWeek, month day"
   formattedDate = new Date().toLocaleDateString('en-US', {
@@ -61,6 +61,8 @@ export class Tab1Page {
       this.saveData();
     }
 
+    console.log('testDate:",', this.formattedDate);
+
   }
 
   populateMood(m: number) {
@@ -88,6 +90,22 @@ export class Tab1Page {
     else if (code == 2) {
       this.clearData();
     }
+  }
+
+  changeDate(offSet: number) {
+    this.sleepDateOffset = offSet;
+    console.log('testOffset:', this.sleepDateOffset);
+    this.setDate();
+
+    this.formattedDate = this.sleepObj.dateId.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    this.editTime = true;
+    this.editMood = false;
+    this.newDay = true;
   }
 
 
@@ -132,6 +150,8 @@ export class Tab1Page {
     this.hoursSlept = parseFloat((hrsSlept + (minutesSlept / 60)).toFixed(2));
   }
 
+  /////////////// BACKEND FUNCTIONS
+
 
   saveData() {
     // Save the data to the backend
@@ -145,6 +165,11 @@ export class Tab1Page {
     this.deleteCurrentData();
   }
 
+  setDate() {
+    this.sleepObj.dateId = new Date();
+    this.sleepObj.dateId.setDate(this.sleepObj.dateId.getDate() - this.sleepDateOffset);
+  }
+
   addSleepData() {
     //want to populate this with what was taken from html (right side)
     //this.sleepObj.dateId = new Date(); // do this later
@@ -154,9 +179,6 @@ export class Tab1Page {
     this.sleepObj.dateId.setDate(this.sleepObj.dateId.getDate() - this.sleepDateOffset);
 
 
-    // DEBUGGING
-    //console.log("sleep hours: ", this.sleepHour)
-    //console.log("sleep level: ", this.sleepLevel)
 
     this.service.addSleep(this.sleepObj).then(() => {
       alert('Sleep Log Added Successfully');
@@ -175,7 +197,7 @@ export class Tab1Page {
       this.mood = 0;
       this.sleepHour = 0;
       this.sleepLevel = 0;
-      
+
       //this.sleepDateOffset = 0;
       //NOTES: I left this out bcs I'm assuming when you delete you stil stay on the same day to log after deleting the entry again
       // if you want to have the day restart to current day when pressing clear data button, uncomment the line of code
