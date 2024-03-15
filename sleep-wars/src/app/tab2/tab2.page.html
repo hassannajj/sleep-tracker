@@ -1,25 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ng-container *ngIf="dataLoaded">
 
-  <!-- Line Chart for sleepHoursSet -->
-  <div>
-    <canvas id="sleepHoursChart"></canvas>
-  </div>
+  <app-line-graph 
+  [lineData]="sleepHoursSet"
+  [labelGraph]="graphLabels[0]"
+></app-line-graph>
 
-  <!-- Line Chart for sleepLevelSet -->
-  <div>
-    <canvas id="sleepLevelChart"></canvas>
-  </div>
-</ion-content>
+  <app-line-graph 
+  [lineData]="sleepLevelSet"
+  [labelGraph]="graphLabels[1]"
+
+  ></app-line-graph>
+</ng-container>

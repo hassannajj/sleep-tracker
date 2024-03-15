@@ -25,6 +25,8 @@ export class Tab1Page {
   // These are the two variables I use to get data from html input
   sleepHour: number = 0;
   sleepLevel: number = 0;
+  sleepDateOffset: number = 0; // offset to change the day, // NOTES: 0 = today, 1 = yesterday
+  
 
   // Formatted to be : "dayOfWeek, month day"
   formattedDate = new Date().toLocaleDateString('en-US', {
@@ -148,6 +150,9 @@ export class Tab1Page {
     //this.sleepObj.dateId = new Date(); // do this later
     this.sleepObj.sleepHour = this.sleepHour;
     this.sleepObj.sleepLevel = this.sleepLevel;
+    this.sleepObj.dateId = new Date();
+    this.sleepObj.dateId.setDate(this.sleepObj.dateId.getDate() - this.sleepDateOffset);
+
 
     // DEBUGGING
     //console.log("sleep hours: ", this.sleepHour)
@@ -170,6 +175,10 @@ export class Tab1Page {
       this.mood = 0;
       this.sleepHour = 0;
       this.sleepLevel = 0;
+      
+      //this.sleepDateOffset = 0;
+      //NOTES: I left this out bcs I'm assuming when you delete you stil stay on the same day to log after deleting the entry again
+      // if you want to have the day restart to current day when pressing clear data button, uncomment the line of code
 
       this.editTime = true;
       this.editMood = false;
