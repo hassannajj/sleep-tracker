@@ -1,9 +1,19 @@
 
+#entire-content {
+  margin:4px, 4px;
+  padding:4px;
+  width: 100%;
+  height: 80vh;
+  overflow-y: scroll;
+  text-align:justify;
+}
+
 .center-card {
   margin: 0 auto;
   /* Adjust width as needed */
   width: 80%;
 }
+
 
 
 ion-card-content {
