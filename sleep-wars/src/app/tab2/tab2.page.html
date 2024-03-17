@@ -1,14 +1,17 @@
 
-<ng-container *ngIf="dataLoaded">
+<div class="main-content">
+  <ng-container *ngIf="dataLoaded">
 
-  <app-line-graph 
-  [lineData]="sleepHoursSet"
-  [labelGraph]="graphLabels[0]"
-></app-line-graph>
-
-  <app-line-graph 
-  [lineData]="sleepLevelSet"
-  [labelGraph]="graphLabels[1]"
-
+    <app-line-graph
+    [lineData]="sleepHoursSet"
+    [labelGraph]="graphLabels[0]"
   ></app-line-graph>
-</ng-container>
+
+    <app-line-graph
+    [lineData]="sleepLevelSet"
+    [labelGraph]="graphLabels[1]"
+
+    ></app-line-graph>
+  </ng-container>
+
+</div>
