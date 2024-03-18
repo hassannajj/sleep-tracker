@@ -1,17 +1,18 @@
-
 <div class="main-content">
   <ng-container *ngIf="dataLoaded">
 
     <app-line-graph
-    [lineData]="sleepHoursSet"
-    [labelGraph]="graphLabels[0]"
-  ></app-line-graph>
+      [lineData]="sleepHoursSet"
+      [labelGraph]="graphLabels[0]"
+    ></app-line-graph>
 
     <app-line-graph
-    [lineData]="sleepLevelSet"
-    [labelGraph]="graphLabels[1]"
-
+      [lineData]="sleepLevelSet"
+      [labelGraph]="graphLabels[1]"
     ></app-line-graph>
-  </ng-container>
 
+    <!-- Ionic button to refresh the page and reload the graphs -->
+    <ion-button (click)="refreshData()" color="primary"> Refresh </ion-button>
+
+  </ng-container>
 </div>

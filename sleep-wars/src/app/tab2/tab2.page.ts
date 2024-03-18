@@ -45,4 +45,9 @@ export class Tab2Page implements OnInit {
     }
     this.dataLoaded = true; // Set flag to indicate data loading is complete
   }
+
+  async refreshData() {
+    this.dataLoaded = false; // Reset data loaded flag
+    await this.getLastSevenDaysData(); // Fetch new data
+  }
 }

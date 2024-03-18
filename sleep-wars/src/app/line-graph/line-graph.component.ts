@@ -43,7 +43,7 @@ export class LineGraphComponent implements AfterViewInit {
       this.textDescription = "Fun fact: You've gotten " + this.dataSum + " hours of sleep total in the last 7 days!";
     }
     else if(this.labelGraph === "Levels"){
-      this.textDescription = "On a scale from 0 - 8, this is how you were feeling this week!";
+      this.textDescription = "On a scale from 1 - 8, this is how you were feeling this week!";
     }
   }
 
