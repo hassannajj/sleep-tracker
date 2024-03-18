@@ -1,4 +1,4 @@
---Readme document for Angela Duran, angeladd@uci.edu, 47301060--
+--Readme document for [Angela Duran, Hayder Al-Najjar], angeladd@uci.edu hhalnajj@uci.edu, [47301060, 67882437]--
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
